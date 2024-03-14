@@ -2,7 +2,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
     loadProgress();
 });
 
-const goalAmount = 100000; // Your savings goal
+const defaultGoal = 100000; // Default goal
+
+// Load goal from localStorage or set to default
+let goalAmount = Number(localStorage.getItem('goalAmount')) || defaultGoal;
+document.getElementById('goalInput').value = goalAmount; // Set the goal input to the current goal
+
+function updateGoal() {
+    goalAmount = Number(document.getElementById('goalInput').value);
+    localStorage.setItem('goalAmount', goalAmount); // Save the new goal to localStorage
+    loadProgress(); // Recalculate progress with the new goal
+}
 
 function updateProgress() {
     const amountAdded = Number(document.getElementById('amountInput').value);
@@ -27,13 +37,15 @@ function updateTotalSaved(amount) {
     updateProgressBar(totalSaved);
 }
 
-function updateProgressBar(totalSaved) {
-    const progressPercentage = Math.min((totalSaved / goalAmount) * 100, 100);
-    document.getElementById('progressBar').style.width = progressPercentage + '%';
-    document.getElementById('progressText').innerText = progressPercentage.toFixed(2) + '%';
-}
-
 function loadProgress() {
     let totalSaved = Number(localStorage.getItem('totalSaved')) || 0;
+    goalAmount = Number(localStorage.getItem('goalAmount')) || defaultGoal; // Update goal from localStorage
+    document.getElementById('goalInput').value = goalAmount; // Update the goal input field
     updateProgressBar(totalSaved);
+}
+
+function updateProgressBar(totalSaved) {
+    const progressPercentage = (totalSaved / goalAmount) * 100;
+    document.getElementById('progressBar').style.width = `${progressPercentage}%`;
+    document.getElementById('progressText').innerText = `${progressPercentage.toFixed(2)}%`;
 }
