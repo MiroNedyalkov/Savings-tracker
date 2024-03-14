@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <input type="number" id="amountInput" placeholder="Enter amount saved">
+    <button onclick="updateProgress()">Add Savings</button>
+    <button onclick="spendMoney()">Spend Savings</button>
+    <div id="progressContainer" style="background-color: #eee; width: 100%; height: 30px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+        <div id="progressBar" style="background-color: #4CAF50; width: 0%; height: 100%; border-radius: 5px; display: flex; align-items: center; justify-content: center;">
+            <span id="progressText"></span>
+        </div>
+    </div>
+
+    <button onclick="resetProgress()">Reset</button>
+    <script src="script.js"></script>
+</body>
+</html>

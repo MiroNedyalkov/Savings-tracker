@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: linear-gradient(to right, #dae2f8, #d6a4a4); /* Soft gradient background */
+    /* Add other properties you already have in the body selector, don't remove them */
+}
+
+#progressBar {
+    background-color: #4CAF50;
+    width: 0%;
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out;
+    position: relative; /* Added for text positioning */
+    display: flex;
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+}
+
+#progressText {
+    color: white; /* Ensure this color contrasts well with your progress bar */
+    font-weight: bold;
+}
